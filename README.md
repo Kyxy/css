@@ -549,11 +549,37 @@ inline-block特点：
 1. 和其他元素在同一行上；
 2. 元素的高度、宽度、顶部和底部边距都可以设置。
 
+##### 盒模型-边框
 
+ 盒子模型的边框是围绕着**内容和补白**的线，这条线的**粗细、样式和颜色**三个属性可以设置。
 
+```css
+div{
+    border-width:2px;
+    border-style:solid;
+    border-color:red;
+}
+```
 
+注：设置```div```标签的边框粗细2px，样式为实心，颜色为红色，可以合写为下列型式。
 
+```css
+div{
+    border:2px  solid  red;
+}
+```
 
+注意：
+
+1. border-style（边框样式）：dashed（虚线）、solid（实现）、dotted（点线）；
+
+2. border-color（边框颜色）：可以设置为16进制颜色；
+
+   ```css
+   border-color:#888;//前面的井号不要忘掉。
+   ```
+
+3. border-width（边框宽度）：thin、 medium、thick（不常用），最常用的是像素px。
 
 
 
