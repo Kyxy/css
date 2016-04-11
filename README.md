@@ -581,9 +581,21 @@ div{
 
 3. border-width（边框宽度）：thin、 medium、thick（不常用），最常用的是像素px。
 
+**四个方向的边框**：
 
+css允许只为一个方向的边框设置样式：
 
+```css
+div{border-bottom:1px solid red;}
+```
 
+同理可以修改其他三边：
+
+```css
+border-top:1px solid red;
+border-right:1px solid red; 
+border-left:1px solid red;
+```
 
 
 
