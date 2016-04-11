@@ -597,7 +597,35 @@ border-right:1px solid red;
 border-left:1px solid red;
 ```
 
+##### 高度和宽度
 
+盒模型的高度（height）和宽度（width）在css定义内值得是填充以里的内容范围，一个```元素的实际宽度=左边界+左边框+	左填充+内容宽度+右填充+右边框+右边界```。元素高度同理。
 
+  ![1](C:\Users\Tracy\Desktop\ScreenCut\1.png) 
 
+css代码：
 
+```css
+div{
+    width:200px;
+    padding:20px;
+    border:1px solid red;
+    margin:10px;    
+}
+```
+
+html代码：
+
+```html
+<body>
+   <div>文本内容</div>
+</body>
+```
+
+元素的实际长度为：10px+1px+20px+200px+20px+1px+10px=262px。
+
+ ![ha](C:\Users\Tracy\Desktop\ScreenCut\ha.png)
+
+注：padding是内边距、margin是外边距。
+
+ 
