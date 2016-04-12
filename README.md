@@ -1233,5 +1233,9 @@ style>
 table td{height:500px;background:#ccc}
 ```
 
-注：
+注： `td`标签默认情况下就设置了`vertical-align:middle`，不需要另外显示设置。
+
+**chrome、FireFox及IE8以上**：
+
+可以设置块级元素的`display:table-cell`，激活`vertical-align`属性，但是兼容性不是太好。
 
