@@ -1239,3 +1239,36 @@ table td{height:500px;background:#ccc}
 
 可以设置块级元素的`display:table-cell`，激活`vertical-align`属性，但是兼容性不是太好。
 
+```html
+<div class="container">
+    <div>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+    </div>
+</div>
+```
+
+```css
+<style>
+.container{
+    height:300px;
+    background:#ccc;
+    display:table-cell;/*IE8以上及Chrome、Firefox*/
+    vertical-align:middle;/*IE8以上及Chrome、Firefox*/
+}
+</style>
+```
+
+##### 隐性改变`display`类型
+
+有一个有趣的现象，当元素（无论之前什么类型，`display:none`除外）设置下列2个句之一：
+
+1. `position: absolute`
+2. `float:left`或`float:right`
+
+元素会自动变为以`display:inline-block`的方式显示，可以设置元素的`width`和`height`且默认宽度不占满父元素。
+
+例如：`<a>`标签是行内元素，设置`width`是无效的，但是设置为`position:absolute`以后就可设置`width`了。
