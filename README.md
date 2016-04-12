@@ -196,16 +196,16 @@ p{
 
 1. 在一个HTML文档中，id选择器只能在文档中使用一次。类选择器可以多次使用。
 
-           正确代码：
+             正确代码：
 
    ```css
-           <p>三年级时，我还是一个<span class="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span class="stress">勇气</span>来回答老师提出的问题。</p>
+             <p>三年级时，我还是一个<span class="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span class="stress">勇气</span>来回答老师提出的问题。</p>
    ```
 
-           错误代码：
+             错误代码：
 
    ```css
-           <p>三年级时，我还是一个<span id="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span id="stress">勇气</span>来回答老师提出的问题。</p>
+             <p>三年级时，我还是一个<span id="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span id="stress">勇气</span>来回答老师提出的问题。</p>
    ```
 
 2. 类选择器可以使用**词列表方法**为一个元素同时设置多个样式。id选择器不能使用ID词列表。
@@ -712,7 +712,7 @@ div{
 <div id="div2"></div>
 ```
 
-  ![2](C:\Users\Tracy\Desktop\a.png)
+  ![2](C:\Users\Tracy\Desktop\ScreenCut\a.png)
 
 两个元素右浮动也可以实现一行显示：
 
@@ -725,7 +725,7 @@ div{
 }
 ```
 
- ![canvas](C:\Users\Tracy\Desktop\b.png)
+ ![canvas](C:\Users\Tracy\Desktop\ScreenCut\b.png)
 
 两个元素一左一右显示：
 
@@ -769,7 +769,7 @@ div{
 
 注：实现`div`元素相对于浏览器窗口向右移100个像素，向下移50个像素。
 
- ![1](C:\Users\Tracy\Desktop\aa.png)
+ ![1](C:\Users\Tracy\Desktop\ScreenCut\aa.png)
 
 ##### 相对定位
 
@@ -790,7 +790,7 @@ div{
 
 注：相较于以前位置向下移动50px，向右移动100px。
 
- ![2](C:\Users\Tracy\Desktop\bb.png)
+ ![2](C:\Users\Tracy\Desktop\ScreenCut\bb.png)
 
 ##### 固定定位
 
@@ -820,9 +820,9 @@ div{
 1. 参照定位的元素必须是相对定位元素的前辈元素：
 
    ```css
-         <div id="box1"><!--参照定位的元素-->
-             <div id="box2">相对参照元素进行定位</div><!--相对定位元素-->
-         </div>
+           <div id="box1"><!--参照定位的元素-->
+               <div id="box2">相对参照元素进行定位</div><!--相对定位元素-->
+           </div>
    ```
 
 2. 参照定位元素必须加入`position:relative`：
@@ -865,13 +865,13 @@ margin:10px 15px 12px 14px;
 1. 如果top、right、bottom、left值相同：
 
    ```css
-         margin:10px 10px 10px 10px;
+           margin:10px 10px 10px 10px;
    ```
 
-         可以缩写为：
+           可以缩写为：
 
    ```css
-         margin:10px;
+           margin:10px;
    ```
 
 2. 如果bottom和top值相同，left和right值相同：
@@ -972,7 +972,7 @@ body{
 1. 英文命令颜色：red、blue、pink···
 
    ```css
-         p{color:red;}
+           p{color:red;}
    ```
 
 2. RGB颜色：与PS中的RGB颜色一致，R（red）、G（green）、B（blue）三种颜色的比例来配色。
@@ -1189,7 +1189,27 @@ style>
 
 总结：三种方法各有优点，视情况使用。
 
+##### 垂直居中-单行文本
 
+**父元素高度确定的单行文本**的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。
+
+```html
+<div class="container">
+    hi,imooc!
+</div>
+```
+
+```css
+<style>
+.container{
+    height:100px;
+    line-height:100px;
+    background:#999;
+}
+</style>
+```
+
+##### 多行文本垂直居中
 
 
 
