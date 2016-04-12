@@ -1272,3 +1272,21 @@ table td{height:500px;background:#ccc}
 元素会自动变为以`display:inline-block`的方式显示，可以设置元素的`width`和`height`且默认宽度不占满父元素。
 
 例如：`<a>`标签是行内元素，设置`width`是无效的，但是设置为`position:absolute`以后就可设置`width`了。
+
+```html
+<div class="container">
+    <a href="#" title="">进入课程请单击这里</a>
+</div>
+```
+
+```css
+<style>
+.container a{
+    position:absolute;
+    width:200px;
+    background:#ccc;
+}
+</style>
+```
+
+​	
