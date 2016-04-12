@@ -196,16 +196,16 @@ p{
 
 1. 在一个HTML文档中，id选择器只能在文档中使用一次。类选择器可以多次使用。
 
-     正确代码：
+           正确代码：
 
    ```css
-     <p>三年级时，我还是一个<span class="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span class="stress">勇气</span>来回答老师提出的问题。</p>
+           <p>三年级时，我还是一个<span class="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span class="stress">勇气</span>来回答老师提出的问题。</p>
    ```
 
-     错误代码：
+           错误代码：
 
    ```css
-     <p>三年级时，我还是一个<span id="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span id="stress">勇气</span>来回答老师提出的问题。</p>
+           <p>三年级时，我还是一个<span id="stress">胆小如鼠</span>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个<span id="stress">勇气</span>来回答老师提出的问题。</p>
    ```
 
 2. 类选择器可以使用**词列表方法**为一个元素同时设置多个样式。id选择器不能使用ID词列表。
@@ -628,4 +628,570 @@ html代码：
 
 注：padding是内边距、margin是外边距。
 
- 
+##### 填充padding
+
+元素内容与边框之间可以设置距离，称之为填充。填充可以分为上、右、下、左（顺时针）。
+
+```css
+div{padding:20px 10px 15px 30px;}
+```
+
+ 顺序不能乱，展开：```padding```指内边距。	
+
+```css
+div{
+   padding-top:20px;
+   padding-right:10px;
+   padding-bottom:15px;
+   padding-left:30px;
+}
+```
+
+##### 边界margin
+
+元素与其他元素之间的距离用```margin```来设置，边界也分为上、右、下、左。
+
+```css
+div{margin:20px 10px 15px 30px;}
+```
+
+展开：
+
+```css
+div{
+   margin-top:20px;
+   margin-right:10px;
+   margin-bottom:15px;
+   margin-left:30px;
+}
+```
+
+上下左右边界都是10px：
+
+```css
+div{ margin:10px;}
+```
+
+上下边界10px，左右20px：
+
+```css
+div{ margin:10px 20px;}
+```
+
+注：padding在边框内部，margin在边框外部。
+
+## CSS布局模型
+
+布局模型和盒模型都是css最基本、最核心的概念。**布局模型**建立在盒模型的基础之上，但是不同于**css布局样式**或者**css布局模板**。css布局模板是布局模型的外在表现形式。
+
+css包含三种基本的布局模型：```Flow、Layer、Float```
+
+流动模型Flow、浮动模型Float、层模型Layer。
+
+##### 流动模型
+
+流动模型Flow是默认的网页布局模式，默认状态下html网页元素都是根据流动模型来分布网页内容。
+
+特点：
+
+1. **块状元素**都会在所处的包含元素内自上而下按顺序垂直延伸分布，默认状况下块状元素的宽度都是100%。实际上，块状元素都会**以行的形式**占据位置（独占一行）。
+2. 在流动模型下，**内联元素**都会在所处的包含元素内从左到右水平分布显示（不独占一行）。
+
+##### 浮动模型
+
+在流动模型Flow中，块状元素总是独占一行。设置元素浮动可以让两个块状元素并排显示。任何元素在默认情况下是不能浮动的，但可以用css定义为浮动。
+
+```css
+div{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+    float:left;
+}
+<div id="div1"></div>
+<div id="div2"></div>
+```
+
+  ![2](C:\Users\Tracy\Desktop\a.png)
+
+两个元素右浮动也可以实现一行显示：
+
+```css
+div{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+    float:right;
+}
+```
+
+ ![canvas](C:\Users\Tracy\Desktop\b.png)
+
+两个元素一左一右显示：
+
+```css
+div{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+}
+#div1{float:left;}
+#div2{float:right;}
+```
+
+ ![3](C:\Users\Tracy\Desktop\ab.png)
+
+##### 层布局模型
+
+层布局模型Layer类似PS等图形处理软件中图层的概念，每个图层能够精确定位操作。但是在网页设计领域，由于网页大小的活动性，层布局不太受追捧。CSS定义了一组定位（positioning）属性来支持层布局模型。
+
+层模型有三种形式：
+
+1. 绝对定位：`position:absolute`
+2. 相对定位：`position:relative`
+3. 固定定位：`position：fixed`
+
+##### 绝对定位
+
+元素在层模型中设置绝对定位，使用`positon:absolute`语句，将元素从文档流中拖出来，然后使用left、right、top、bottom属性性对于其**最接近的一个具有定位属性的父包含块**进行定位（如果不存在，则相对于body，即浏览器窗口）。
+
+```css
+div{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+    position:absolute;
+    left:100px;
+    top:50px;
+}
+<div id="div1"></div>
+```
+
+注：实现`div`元素相对于浏览器窗口向右移100个像素，向下移50个像素。
+
+ ![1](C:\Users\Tracy\Desktop\aa.png)
+
+##### 相对定位
+
+通过`position:relative`为层模型中的元素设置相对定位，通过left、right、top、bottom属性确定元素在**正常文档流**中的偏移位置。相对定位完成的过程：首先按static（float）方式生成一个元素（并且元素向层一样浮动起来），然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保持不动。
+
+```css
+#div1{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+    position:relative;
+    left:100px;
+    top:50px;
+}
+
+<div id="div1"></div>
+```
+
+注：相较于以前位置向下移动50px，向右移动100px。
+
+ ![2](C:\Users\Tracy\Desktop\bb.png)
+
+##### 固定定位
+
+通过`position:fixed`实现固定定位，相对移动坐标是视图（屏幕内的网页窗口）本身。由于视图本身是固定的，不会随浏览器窗口的滚动条滚动而变化，除非你在屏幕中移动浏览器窗口的屏幕位置，或者改变浏览器窗口的显示大小。
+
+固定定位的元素会始终位于浏览器窗口内视图的某个位置，不会受文档流动影响。与`background-attachment:fixed`属性功能相同。
+
+```css
+#div1{
+    width:200px;
+    height:200px;
+    border:2px red solid;
+    position:fixed;
+    left:100px;
+    top:50px;
+}
+<p>文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。</p>
+....
+```
+
+实现相对于**浏览器视图**向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。
+
+##### Relative和Absolute组合使用
+
+绝对定位方法：使用`position:absolute`可以实现被设置元素**相对于浏览器（body）**设置定位后，可以通过`position:relative`来设置相对于其他元素进行定位。但必须遵循下列规定：
+
+1. 参照定位的元素必须是相对定位元素的前辈元素：
+
+   ```css
+         <div id="box1"><!--参照定位的元素-->
+             <div id="box2">相对参照元素进行定位</div><!--相对定位元素-->
+         </div>
+   ```
+
+2. 参照定位元素必须加入`position:relative`：
+
+   ```css
+   #box1{
+       width:200px;
+       height:200px;
+       position:relative;        
+   }
+   ```
+
+3. 定位元素加入`position:absolute`后，可以使用left、right、top、bottom来进行偏移定位：
+
+   ```css
+   #box2{
+       position:absolute;
+       top:20px;
+       left:30px;         
+   }
+   ```
+
+   注：box2可以相对于父元素box1定位（这里的参照物不再是浏览器，可以自由设置）
+
+## CSS代码缩写，占用更少带宽
+
+##### 盒模型代码缩写
+
+讲盒模型时，外边距(margin)、内边距(padding)、和边框(border)设置上下左右四个方向的边距**按照顺时针方向：上、右、下、左。**
+
+**具体应用在margin：**
+
+```css
+margin:10px 15px 12px 14px;
+/*上设置为10px、右设置为15px、下设置为12px、左设置为14px*/
+```
+
+通常有以下三种缩写：
+
+1. 如果top、right、bottom、left值相同：
+
+   ```css
+         margin:10px 10px 10px 10px;
+   ```
+
+         可以缩写为：
+
+   ```css
+         margin:10px;
+   ```
+
+2. 如果bottom和top值相同，left和right值相同：
+
+   ```css
+   margin:10px 20px 10px 20px;
+   ```
+
+   可以缩写为：
+
+   ```css
+   margin:10px 20px;
+   ```
+
+3. 如果left和right值相同：
+
+   ```css
+   margin:10px 20px 30px 20px;
+   ```
+
+   可以缩写为：
+
+   ```css
+   margin:10px 20px 30px;
+   ```
+
+   注意：padding和margin的缩写形式一致。
+
+##### 颜色值缩写
+
+颜色的css样式同样可以缩写，当设置的颜色是16进制值时，如果两位相同的值可以缩写一半。
+
+```css
+p{color:#000000;}
+```
+
+可以缩写为：
+
+```css
+p{color: #000;}
+```
+
+```css
+p{color: #336699;}
+```
+
+可以缩写为：
+
+p{color: #369;}
+
+##### 字体缩写
+
+字体css样式的缩写：
+
+```css
+body{
+    font-style:italic;
+    font-variant:small-caps; 
+    font-weight:bold; 
+    font-size:12px; 
+    line-height:1.5em; 
+    font-family:"宋体",sans-serif;
+}
+```
+
+可以缩写为一句：
+
+```css
+body{
+    font:italic  small-caps  bold  12px/1.5em  "宋体",sans-serif;
+}
+```
+
+注意：
+
+1. 使用这种简写至少要指定font-size、font-family属性，其他属性（如 font-weight、font-style、font-varient、line-height）如果没有指定值会使用默认值。
+
+2. 在缩写时 font-size 与 line-height 中间要加入“/”斜扛。
+
+   一般情况下对于中文网站，英文较少，比较常用：
+
+   设置字号、行间距、中文字体、英文字体。
+
+   ```css
+   body{
+       font:12px/1.5em  "宋体",sans-serif;
+   }
+   ```
+
+## 单位和值
+
+##### 颜色
+
+在网页中	颜色设置很重要，包括字体颜色（color）、背景颜色（background-color）、边框颜色（border）等。
+
+设置颜色的方法：
+
+1. 英文命令颜色：red、blue、pink···
+
+   ```css
+         p{color:red;}
+   ```
+
+2. RGB颜色：与PS中的RGB颜色一致，R（red）、G（green）、B（blue）三种颜色的比例来配色。
+
+   ```css
+   p{color:rgb(133,45,200);}
+   ```
+
+    每一项的值可以是0~255之间的整数，也可以是0%-100%的百分数。
+
+3. 十六进制颜色：运用比较普遍的方法。原理是RGB设置，但是每一项的值由0-255编程了00-ff。只是用16进制来表示RGB配色的数值。
+
+   ```css
+   p{color:#00ffff;}
+   ```
+
+   配色表：
+
+   ![5](C:\Users\Tracy\Desktop\5.png)
+
+##### 长度值
+
+长度单位目前常用的：像素px、文本宽度的倍数em、%百分比。**都是相对单位**。
+
+**像素**
+
+像素指显示器上的小点（CSS规范中假设90像素=1英寸）。实际情况是浏览器会使用显示器的实际像素值，大多数设计倾向使用像素px作为单位。
+
+**em**
+
+数值上等于本元素字体给定的`font-size`值，如果元素`font-size`值为20px，有`1em=20px`。
+
+```css
+p{font-size:12px;text-indent:2em;}
+```
+
+实现代码首行缩进40px。注意：给`font-size`设置单位为em时，计算的标准以p的父元素的`font-size`为基础。
+
+##### 百分比
+
+```css
+p{font-size:12px;line-height:130%}
+```
+
+设置行高（行间距）为字体的130%。
+
+## CSS样式设置技巧
+
+##### 行内元素-水平居中
+
+被设置元素为文本、图片等行内元素时，水平居中通过给父元素设置`text-align`来实现。
+
+```html
+<body>
+  <div class="txtCenter">我是文本，哈哈，我想要在父容器中水平居中显示。</div>
+</body>
+```
+
+```css
+<style>
+  div.txtCenter{
+    text-align:center;
+  }
+</style>
+```
+
+##### 块元素-水平居中
+
+当被设置元素是块元素时`text-align:center`不起作用，块状元素分为定宽和不定宽两种。
+
+**定宽：**
+
+对于定宽块状元素可以通过设置**左右margin值为：auto**来实现居中。
+
+```html
+<body>
+  <div>我是定宽块状元素，哈哈，我要水平居中显示。</div>
+</body>
+```
+
+```css
+<style>
+div{
+    border:1px solid red;/*为了显示居中效果明显为 div 设置了边框*/
+    
+    width:500px;/*定宽*/
+    margin:20px auto;/* margin-left 与 margin-right 设置为 auto */
+}
+```
+
+可以写为：
+
+```css
+{ 
+  margin-left:auto
+  margin-right:auto
+  }
+```
+
+注意：元素的上下margin值可以随意设置。
+
+理解：行内元素如文本、图片等设置`text-align:center`是将元素标签框以默认样式显示（没有居中），**标签匡中的内容居中显示**；定宽块状元素，是将制定宽度的**标签框居中放置**，其中的**内容在标签框内不居中显示。**
+
+##### 不定宽块状元素
+
+在实际工作中会遇到为“不定宽度的块状元素”设置居中，类似：网页上的分页导航，分页数量不确定所以不能通过设置宽度来限制它的弹性。为不定宽度块状元素设置居中的三种方法：
+
+1. 加入`table`标签；
+2. 设置`display:inline`方法；
+3. 设置`position:relative`和`left:50%`
+
+**加入`table`标签**：
+
+1. 为需要设置居中的元素外面加入一个`table`标签（包括`<tbody>、<tr>、<td>`）；
+
+2. 为这个table设置左右margin居中（与定宽块相同）。
+
+   ```css
+   <style>
+   table{
+       margin:0 auto;
+   }
+
+   ul{list-style:none;margin:0;padding:0;}
+   li{float:left;display:inline;margin-right:8px;}
+   </style>
+   ```
+
+   ```html
+   <div>
+   <table>
+     <tbody>
+       <tr><td>
+       <ul>
+           <li><a href="#">1</a></li>
+           <li><a href="#">2</a></li>
+           <li><a href="#">3</a></li>
+       </ul>
+       </td></tr>
+     </tbody>
+   </table>
+   </div>
+   ```
+
+**将块级元素为：`display:inline`**：将块级元素（独占一行，其后内容另起一行）转换为内联元素后，使用`text-align:center`来实现居中效果。
+
+```html
+<body>
+<div class="container">
+    <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+    </ul>
+</div>
+</body>
+```
+
+```css
+style>
+.container{
+    text-align:center;
+}
+.container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:inline;
+}
+.container li{
+    margin-right:8px;
+    display:inline;
+}
+</style>
+```
+
+注：相比于table方法，不用增加无语义标签，简化了嵌套深度，但是将块状元素变为行内元素后，少了设定长度值等功能。
+
+**通过给父元素设置float，然后父元素设置`position:relative`和`left:50%`，子元素设置`position:relative`和`left:50%`实现水平居中。**
+
+```html
+<body>
+<div class="container">
+    <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+    </ul>
+</div>
+</body>
+```
+
+```css
+<style>
+.container{
+    float:left;
+    position:relative;
+    left:50%
+}
+
+.container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    
+    position:relative;
+    left:-50%;
+}
+.container li{float:left;display:inline;margin-right:8px;}
+</style>
+```
+
+注：这种方法可以保留块级元素以`display:block`显示，不增加无语义标签，不增加嵌套深度，但是设置`position:relative`带来了一定的副作用。
+
+总结：三种方法各有优点，视情况使用。
+
+
+
+
+
+
+
