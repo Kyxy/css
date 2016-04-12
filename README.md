@@ -1189,9 +1189,9 @@ style>
 
 总结：三种方法各有优点，视情况使用。
 
-##### 垂直居中-单行文本
+##### 垂直居中-父元素高度确定的单行文本
 
-**父元素高度确定的单行文本**的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。
+**父元素高度确定的单行文本**的竖直居中的方法是通过设置父元素的 **height 和 line-height 高度一致**来实现的。
 
 ```html
 <div class="container">
@@ -1211,7 +1211,27 @@ style>
 
 ##### 多行文本垂直居中
 
+父元素确定的多行文本、图片、块状元素的垂直居中方法有两种：
 
+**使用插入`table`（包括tbody、tr、td）标签，同时设置`vertical-align: middle`**：其中`vertical-align: middle`这个样式只有在父元素为`td`或`th`时才有效，所以需要插入`table`标签。
 
+```html
+<body>
+<table><tbody><tr><td class="wrap">
+<div>
+    <p>看我是否可以居中。</p>
+    <p>看我是否可以居中。</p>
+    <p>看我是否可以居中。</p>
+    <p>看我是否可以居中。</p>
+    <p>看我是否可以居中。</p>
+</div>
+</td></tr></tbody></table>
+</body>
+```
 
+```css
+table td{height:500px;background:#ccc}
+```
+
+注：
 
